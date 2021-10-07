@@ -8,7 +8,7 @@ objects by subjects. This can be used to allow, deny, or change the
 behavior of any set of calls. While not a perfect way of validating your
 reference monitor, it is useful to create test cases to see whether your
 security layer will work as expected (the test cases may be turned in as
-part of the next assignment). Please ask your instructor if test cases are available to you, some instructors may provide with test cases.
+part of the next assignment).
 
 This assignment is intended to reinforce concepts about access control and
 reference monitors in a hands-on manner. 
@@ -26,10 +26,25 @@ valid file must start with the character 'S' and end with the character
 'E'.  If any other characters (including lowercase 's', 'e', etc.) are
 the first or last characters, then the file is considered invalid. 
 
+#### Operation when Creating a new File
 Applications use ABopenfile() to create or open a file. Files are created by 
-setting create=True. When calling ABopenfile(), the reference 
-monitor will create a valid backup file called filename.a and an empty 
-file we will write to called filename.b. When close() is called on the file, if both filename.a and filename.b are valid, the original file's data is replaced with the data of filename.b. If filename.b is not valid, the original file should use the data of the backup filename.a file. Afterward both the filename.a and filename.b file should be deleted, and only the original file should remain. 
+setting create=True. The reference 
+monitor will create filename.a and filename.b.  filename.a should contain only the characters 'S' and 'E'
+filename.b should be empty.
+
+In this arrangement, all read operations will read from filename.a and all writes will write to filename.b
+
+When close() is called on the file, if filename.b is valid, its data is written to a new file with the name specified in the initial call to ABopenfile().
+If filename.b is not vaild, the new file receive  the contents of filename.a.
+
+Afterward both filename.a and filename.b should be deleted leaving only the new file.
+
+#### Operation when Opening an Existing File
+
+When ABopenfile() is called with create=False it should attempt to use an existing file on disk.
+In this situation, filename.a and filename.b should be created and populated with the contents of the original file.
+
+read, write, and close operations should act the same as above. 
 
 Write test applications to ensure your reference monitor behaves properly 
 in different cases and to test attacks against your monitor.    
@@ -38,21 +53,24 @@ in different cases and to test attacks against your monitor.
 1. Not modify or disable any functionality of any [RepyV2 API calls](../Programming/RepyV2API.md), such as:
    * Creating new files  
    * Opening an existing file  
-   * Reading valid backup using readat()  
-   * Writing to file using writeat(). This includes invalid writes, because  'S' and 'E'
+   * Reading filename.a using readat()  
+   * Writing to filename.b using writeat(). This includes invalid writes, because  'S' and 'E'
 may later be written to the begining and end of the file respectively.  
-2. Check if file contents starts with 'S' and ends with 'E', only when close() is called.
-3. Update the original file with the new data IF the new data is valid on close().
-4. Not produce any errors  
+3. Check if filename.b's content starts with 'S' and ends with 'E', only when close() is called.
+4. Update the original file with the new data IF the new data is valid on close().
+5. Not produce any errors  
    * Normal operations should not be blocked or produce any output  
    * Invalid operations should not produce any output to the user
+
+<!--
 #### The Reference Monitor Should:
 1. Create two copies of the same file (filename.a and filename.b)   
    * One is a valid backup to read from, and the other is written to
 2. When an app calls ABopenfile(), the method opens the A/B files, which 
  you should name filename.a and filename.b.
-3. When the app calls readat(), all reads must be performed on the valid backup.
-4. When the app calls writeat(), all writes must be performed on the written to file. 
+3. When the app calls readat(), all reads must be performed on filename.a
+4. When the app calls writeat(), all writes must be performed on filename.b. 
+-->
 
 
 Three design paradigms are at work in this assignment: accuracy,
@@ -295,15 +313,6 @@ done with the following command at the terminal:
 testing if Repy installed correctly.
 
 
-# Extra Credit
-----
-For extra credit, program that keeps all old versions of files and allows
-read from any of them.  Writing to any old file creates a new (empty) version
-of that file.
-Do not submit this code inside your assignment. Submit a separate copy for extra credit.
-
-
-
 # What to turn in?
 ----
  * Turn in a repy file called reference_monitor_[ netid ].r2py with all
@@ -311,6 +320,4 @@ letters in lowercase.
 
 * **Never raise unexpected errors or produce any output.**  Your program
 must produce no output when run normally.
-
- * For extra credit turn in a second repy file called extra_credit_[netid].r2py  **You must turn in separate files for the normal assignment and extra credit**
 
