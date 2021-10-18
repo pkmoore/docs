@@ -24,7 +24,7 @@ Within the context of this assignment these design paradigms translate to:
 
  * Security: The attacker should not be able to circumvent the security layer. For example, if the security layer is correctly implemented but the attacker can still cause an invalid file to be saved, read the "write to" file, write to the backup file we read from, or read/write out of bounds, then the security is compromised. Note if preventing the aforementioned properties is part of the specification simply testing whether the actions can occur would merely be an Accuracy test. The keyword is circumvention. 
 
-You will submit a zip file containing all of the tests you have created. You will gain points for every student's reference monitor you find a flaw in. It is good if multiple tests of yours break a student's reference monitor, but you gain the same number of tests whether one or more tests break the layer.
+You will submit a zip file containing all of the tests you have created. It is good if multiple tests of yours break a student's reference monitor, but you gain the same number of tests whether one or more tests break the layer.
 
 
 ## Prerequisites
@@ -61,7 +61,7 @@ If we can find a case where the hypothesis is false, then the security layer is 
 
 
 ### Examples of tests
-Test cases are briefly described at [github: SeattleTestbed/docs/blob/master/EducationalAssignments/ABStoragePartOne.md] and [wiki:RepyV2SecurityLayers]. Below is another example of a test case you may want to consider.  This test case gives the right 'style' for your all your test cases, but lacks in the number of test cases.  A good attack will include many test cases.
+Test cases are briefly described at [github: SeattleTestbed/docs/blob/master/EducationalAssignments/ABStoragePartOne.md] and [wiki:RepyV2SecurityLayers]. Below is another example of a test case you may want to consider.  This attack program gives the right 'style' for your all your test cases, but lacks in the number of test cases.  A good attack will include many test cases.
 #### Test case 1:
 
 ```
@@ -151,12 +151,12 @@ The try, except, else and finally statements are part of **exception handling**.
 
 ### Hints and Ideas for testing
 
-When writing your own tests it is important to test for a complete set of possible penetrations.  Keep in mind, it only takes one test case to break through a security layer.  Some of the things you may want to test for include:
+The goal is to construct a test suite that is as thorough as possible. Keep in mind, it only takes one test case to break through a security layer.  Some of the things you may want to test for include:
 
  * threading
  * writing to multiple files
 
-And more!  Remember a good security layer can't be broken by anyone!  Which is all part of the fun!  It's about solving a puzzle.  First you make the puzzle - write the security layer, then you solve the puzzle - try to bypass it.  If your puzzle is "good enough", no one will be able to break it, no matter what.  
+And more!  Remember a good security layer can't be broken by anyone!  Which is all part of the fun!  It's about solving a puzzle.  First you make the puzzle - write the security layer, then you solve the puzzle - try to bypass it.  If your puzzle is "good enough", no one will be able to break it.
 
 
 ## Notes and Resources
