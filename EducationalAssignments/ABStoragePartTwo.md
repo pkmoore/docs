@@ -215,4 +215,4 @@ This will print out the name of each reference monitor before it starts executin
 ## What to turn in?
 ----
 
- * Turn in the test cases used to attack a given reference monitor in a zip file.   The name of each testcase must match the following format: <netid>_attackcase1.r2py, <netid>_attackcase2.r2py, etc
+ * Turn in the test cases used to attack a given reference monitor in a zip file.   The name of each testcase must match the following format: \<netid\>_attackcase1.r2py, \<netid\>_attackcase2.r2py, etc
