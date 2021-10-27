@@ -123,7 +123,7 @@ myfile.close()
 
 # READ OPERATION
 # Reopen file again to read
-myfile=ABopenfile("testfile.txt",True)
+myfile=ABopenfile("testfile.txt",False)
 
 # Read the file to check the contents
 try:
