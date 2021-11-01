@@ -48,16 +48,11 @@ if create:
 ### Code Analysis
 Let's analyze one of the bugs in this implementation.  According to the specifications in [Part One](ABStoragePartOne.md), Any valid operation should not be blocked. When open() is called with flag False, it should be handled. In the code above, there exists no logic to perform file open with flag False. Further file read/write would lead to error thrown as the file handle would not be created. This is an accuracy issue.
 
-## Case 3: Sample implementation of the open call - initialize function - New file 'SE' write
-
-Similarly, when flag is True and the file exists already (Flag would be ignored, look at Repy documentation), every time 'SE' write would be performed to a already existing file. This behavior does not abide to the rules mentioned where 'SE' write should happen only to a file that did not exist before.
-
-
 ## What to turn in?
 ----
 
- * Turn in the reference monitor that you have fixed.  The name of the reference monitor should be in the form of reference_monitor_[poly_username].r2py
-e.g. reference_monitor_jcappos.r2py
+ * Turn in the reference monitor that you have fixed.  The name of the reference monitor should be in the form of reference_monitor_<netid>.r2py
+e.g. reference_monitor_<netid>.r2py
 All letters must be lowercase.
  * In addition to your reference monitor, submit a one-page PDF document, in which you discuss the different classes of bugs you had in your reference monitors and why.
 What kind of bug did you experience, what caused the bug, and what did you do to fix it?
