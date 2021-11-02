@@ -51,8 +51,8 @@ Let's analyze one of the bugs in this implementation.  According to the specific
 ## What to turn in?
 ----
 
- * Turn in the reference monitor that you have fixed.  The name of the reference monitor should be in the form of reference_monitor_<netid>.r2py
-e.g. reference_monitor_<netid>.r2py
+ * Turn in the reference monitor that you have fixed.  The name of the reference monitor should be in the form of reference_monitor_\<netid\>.r2py
+e.g. reference_monitor_\<netid\>.r2py
 All letters must be lowercase.
  * In addition to your reference monitor, submit a one-page PDF document, in which you discuss the different classes of bugs you had in your reference monitors and why.
 What kind of bug did you experience, what caused the bug, and what did you do to fix it?
